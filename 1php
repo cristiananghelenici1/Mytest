@@ -1,4 +1,6 @@
 <?php
 echo "first commit";
 echo "second commit";
+$i = 5;
+echo $i;
 ?>
