@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            height: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nume Prenume</th>
+                <th>IDNP</th>
+                <th>Finantare</th>
+                <th>Media</th>
+                <th>Anul de studii</th>
+                <th>Cazare</th>
+            </tr>
+
+<?php
+    function printresult($result_set){
+        while(($row = $result_set-> fetch_assoc() ) != false)   {
+            //echo $row["id"]." ".$row["nume_prenume"]." ".$row["idnp"]." ".$row["finantare"]." "
+            //.$row["media"]." ".$row["anul_de_studii"]." ".$row["cazare"];
+            //echo $row["Nume_Prenume"];
+?>
+        <tr>
+                <td><?= $row["id"]; ?></td>
+                <td><?= $row["nume_prenume"]; ?></td>
+                <td><?= $row["idnp"]; ?></td>
+                <td><?= $row["finantare"]; ?></td>
+                <td><?= $row["media"]; ?></td>
+                <td><?= $row["anul_de_studii"]; ?></td>
+                <td><?= $row["cazare"]; ?></td>
+            </tr>
+<?php
+        }
+        //echo "<br />"."numarul inscrierilor" .$result_set->num_rows."<br />-----------------------------";
+    }
+    
+
+    $mysqli = new mysqli ("localhost", "root" , "christy0202" , "utm");
+    $mysqli->query ("SET NAMES 'UTF8'");
+
+    $result_set = $mysqli->query("SELECT * FROM `students`");
+    printResult ($result_set);
+
+    $mysqli->close ();
+
+?>
+        </table>
+
+    </div>
+
+     <form action="insert.php">
+          <input type="submit" value="Adauga">
+
+     </form
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            height: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nume Prenume</th>
+                <th>IDNP</th>
+                <th>Finantare</th>
+                <th>Media</th>
+                <th>Anul de studii</th>
+                <th>Cazare</th>
+            </tr>
+
+<?php
+   
+    $mysqli = new mysqli ("localhost", "root" , "christy0202" , "utm");
+    $mysqli->query ("SET NAMES 'UTF8'");
+
+    	INSERT INTO `utm`.`students` (`id`, `nume_prenume`, `idnp`, `finantare`, `media`, `anul_de_studii`, `cazare`) 
+    	VALUES (NULL, 'Gaina Cristin', '1234567654348', 'buget', '9', '2', 'camin');
+
+    $mysqli->close ();
+
+?>
+
+
+     	<form action="insert.php">
+     		<tr>
+                <td><?= $row["id"]; ?></td>
+                <td><?= $row["nume_prenume"]; ?></td>
+                <td><?= $row["idnp"]; ?></td>
+                <td><?= $row["finantare"]; ?></td>
+                <td><?= $row["media"]; ?></td>
+                <td><?= $row["anul_de_studii"]; ?></td>
+                <td><?= $row["cazare"]; ?></td>
+            </tr>
+
+          <input type="submit" value="Adauga">
+     	</form>
+
+       </table>
+    </div>
+
+
+</body>
+</html>
